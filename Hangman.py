@@ -1,3 +1,4 @@
+
 import random, requests
 
 def fetch_words():
@@ -8,7 +9,8 @@ def fetch_words():
         data = response.json()
         return data
     else:
-        return []
+        print('Unable to fetch word')
+        exit()
 
 def choose_word(words):
     hard_words = [word for word in words if len(word) == 5]    
@@ -99,7 +101,7 @@ def hangman():
 
     print("Welcome to Hangman!")
     print(display_word(word, guessed_letters))
-    print(display_hangman(-incorrect_attempts))
+    print(display_hangman(-1))
     score = 0
 
     while incorrect_attempts < 6:
@@ -117,7 +119,7 @@ def hangman():
         else:
             incorrect_attempts += 1
             print("Wrong guess! You have", 6 - incorrect_attempts, "attempts left.")
-            print(display_hangman(incorrect_attempts))
+            print(display_hangman(-incorrect_attempts-1))
             if incorrect_attempts == 6:
                 print("Sorry, you lost! The word was:", word)
                 break

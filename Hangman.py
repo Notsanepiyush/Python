@@ -99,7 +99,7 @@ def hangman():
 
     print("Welcome to Hangman!")
     print(display_word(word, guessed_letters))
-    print(display_hangman(incorrect_attempts))
+    print(display_hangman(-incorrect_attempts))
     score = 0
 
     while incorrect_attempts < 6:
